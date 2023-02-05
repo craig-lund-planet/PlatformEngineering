@@ -83,13 +83,13 @@ Future iterations of this will shift to a "Fusion Development" approach. [Ebook:
     [App Registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)   
     Create and managed App Registrations. 
 
-    - Dev-Deployment-App  
+    - Dev-Service-App  
         Add to each non-prod environment and assign System Administrator Role.  
         As a Global Office Admin run PowerShell command.   
         ```powershell
         New-PowerAppManagementApp -ApplicationId <clientid>
         ```
-    - Deployment-App  
+    - Service-App  
         Add to prod environment and assign System Administrator Role.  
         As a Global Office Admin run PowerShell command.  
         ```powershell

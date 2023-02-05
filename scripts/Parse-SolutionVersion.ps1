@@ -62,260 +62,260 @@ else {
 Write-Host "Connecting to"$DomainName"..."
 $_Connection = Connect-CrmOnline -ServerUrl "https://$DomainName.$DomainSuffix/" -ClientSecret $ClientSecret -OAuthClientId $ClientID
 #endregion
-#region Process string version to ints
+#region Parse solution version 
 if ($_Connection.IsReady -eq $true) {
     
     Write-Host "Getting Solution Version..."
-    $_Solutions = Get-CrmRecords -EntityLogicalName solution -FilterAttribute uniquename -FilterOperator eq -FilterValue $SolutionName -Fields version -conn $_Connection 
-}
-else {
+    $_Solutions = Get-CrmRecords -EntityLogicalName solution -FilterAttribute uniquename -FilterOperator eq -FilterValue $SolutionName -Fields version -conn $_Connection
+    if ($_Solutions.Count -gt 0) {
     
-    Write-Warning "Connection not ready!"
-}
-if ($_Solutions.Count -gt 0) {
-    
-    Write-Host "Parsing solution version..."
-    $_Solutions.CrmRecords[0].version
-    
-    $versionArray = $_Solutions.CrmRecords[0].version.ToCharArray()
-
-    $_temp = $null
-    $_major = $null
-    $_minor = $null
-    $_build = $null
-    $_revision = $null
-
-    for ($i = 0; $i -lt $versionArray.Count; $i++) {
-    
-        switch ($versionArray[$i]) {
-
-            '0' { 
+        Write-Host "Parsing solution version..."
+        $_Solutions.CrmRecords[0].version
         
-                if ($null -eq $_temp) {
-                        
-                    $_temp = 0
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-                else {
-                    
-                    $_temp = ($_temp*10)+0
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-             }
-            '1' { 
+        $versionArray = $_Solutions.CrmRecords[0].version.ToCharArray()
+    
+        $_temp = $null
+        $_major = $null
+        $_minor = $null
+        $_build = $null
+        $_revision = $null
+    
+        for ($i = 0; $i -lt $versionArray.Count; $i++) {
         
-                if ($null -eq $_temp) {
+            switch ($versionArray[$i]) {
+    
+                '0' { 
+            
+                    if ($null -eq $_temp) {
+                            
+                        $_temp = 0
+                        if ($i -eq $versionArray.Count-1) {
                         
-                    $_temp = 1
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
+                            $_revision = $_temp          
+                        }
                     }
-                }
-                else {
-                    
-                    $_temp = ($_temp*10)+1
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-             }
-            '2' { 
-
-                if ($null -eq $_temp) {
+                    else {
                         
-                    $_temp = 2
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-                else {
-                    
-                    $_temp = ($_temp*10)+2
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-             }
-            '3' { 
-
-                if ($null -eq $_temp) {
+                        $_temp = ($_temp*10)+0
+                        if ($i -eq $versionArray.Count-1) {
                         
-                    $_temp = 3
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
+                            $_revision = $_temp          
+                        }
                     }
-                }
-                else {
-                    
-                    $_temp = ($_temp*10)+3
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-             }
-            '4' { 
-
-                if ($null -eq $_temp) {
+                 }
+                '1' { 
+            
+                    if ($null -eq $_temp) {
+                            
+                        $_temp = 1
+                        if ($i -eq $versionArray.Count-1) {
                         
-                    $_temp = 4
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
+                            $_revision = $_temp          
+                        }
                     }
-                }
-                else {
-                    
-                    $_temp = ($_temp*10)+4
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-             }
-            '5' { 
-
-                if ($null -eq $_temp) {
+                    else {
                         
-                    $_temp = 5
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-                else {
-                    
-                    $_temp = ($_temp*10)+5
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-             }
-            '6' { 
-
-                if ($null -eq $_temp) {
+                        $_temp = ($_temp*10)+1
+                        if ($i -eq $versionArray.Count-1) {
                         
-                    $_temp = 6
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
+                            $_revision = $_temp          
+                        }
                     }
-                }
-                else {
-                    
-                    $_temp = ($_temp*10)+6
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-             }
-            '7' { 
-
-                if ($null -eq $_temp) {
+                 }
+                '2' { 
+    
+                    if ($null -eq $_temp) {
+                            
+                        $_temp = 2
+                        if ($i -eq $versionArray.Count-1) {
                         
-                    $_temp = 7
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
+                            $_revision = $_temp          
+                        }
                     }
-                }
-                else {
-                    
-                    $_temp = ($_temp*10)+7
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-             }
-            '8' { 
-
-                if ($null -eq $_temp) {
+                    else {
                         
-                    $_temp = 8
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-                else {
-                    
-                    $_temp = ($_temp*10)+8
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-             }
-            '9' { 
-
-                if ($null -eq $_temp) {
+                        $_temp = ($_temp*10)+2
+                        if ($i -eq $versionArray.Count-1) {
                         
-                    $_temp = 9
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
+                            $_revision = $_temp          
+                        }
                     }
-                }
-                else {
-                    
-                    $_temp = ($_temp*10)+9
-                    if ($i -eq $versionArray.Count-1) {
-                    
-                        $_revision = $_temp          
-                    }
-                }
-             }
-            '.' { 
-        
-                if ($null -eq $_major) {
+                 }
+                '3' { 
+    
+                    if ($null -eq $_temp) {
+                            
+                        $_temp = 3
+                        if ($i -eq $versionArray.Count-1) {
                         
-                    $_major = $_temp
-                    $_temp = $null
-                }
-                if ($null -eq $_minor) {
-                    
-                    $_minor = $_temp
-                    $_temp = $null
-                }
-                if ($null -eq $_build) {
-                    
-                    $_build = $_temp
-                    $_temp = $null
+                            $_revision = $_temp          
+                        }
+                    }
+                    else {
+                        
+                        $_temp = ($_temp*10)+3
+                        if ($i -eq $versionArray.Count-1) {
+                        
+                            $_revision = $_temp          
+                        }
+                    }
+                 }
+                '4' { 
+    
+                    if ($null -eq $_temp) {
+                            
+                        $_temp = 4
+                        if ($i -eq $versionArray.Count-1) {
+                        
+                            $_revision = $_temp          
+                        }
+                    }
+                    else {
+                        
+                        $_temp = ($_temp*10)+4
+                        if ($i -eq $versionArray.Count-1) {
+                        
+                            $_revision = $_temp          
+                        }
+                    }
+                 }
+                '5' { 
+    
+                    if ($null -eq $_temp) {
+                            
+                        $_temp = 5
+                        if ($i -eq $versionArray.Count-1) {
+                        
+                            $_revision = $_temp          
+                        }
+                    }
+                    else {
+                        
+                        $_temp = ($_temp*10)+5
+                        if ($i -eq $versionArray.Count-1) {
+                        
+                            $_revision = $_temp          
+                        }
+                    }
+                 }
+                '6' { 
+    
+                    if ($null -eq $_temp) {
+                            
+                        $_temp = 6
+                        if ($i -eq $versionArray.Count-1) {
+                        
+                            $_revision = $_temp          
+                        }
+                    }
+                    else {
+                        
+                        $_temp = ($_temp*10)+6
+                        if ($i -eq $versionArray.Count-1) {
+                        
+                            $_revision = $_temp          
+                        }
+                    }
+                 }
+                '7' { 
+    
+                    if ($null -eq $_temp) {
+                            
+                        $_temp = 7
+                        if ($i -eq $versionArray.Count-1) {
+                        
+                            $_revision = $_temp          
+                        }
+                    }
+                    else {
+                        
+                        $_temp = ($_temp*10)+7
+                        if ($i -eq $versionArray.Count-1) {
+                        
+                            $_revision = $_temp          
+                        }
+                    }
+                 }
+                '8' { 
+    
+                    if ($null -eq $_temp) {
+                            
+                        $_temp = 8
+                        if ($i -eq $versionArray.Count-1) {
+                        
+                            $_revision = $_temp          
+                        }
+                    }
+                    else {
+                        
+                        $_temp = ($_temp*10)+8
+                        if ($i -eq $versionArray.Count-1) {
+                        
+                            $_revision = $_temp          
+                        }
+                    }
+                 }
+                '9' { 
+    
+                    if ($null -eq $_temp) {
+                            
+                        $_temp = 9
+                        if ($i -eq $versionArray.Count-1) {
+                        
+                            $_revision = $_temp          
+                        }
+                    }
+                    else {
+                        
+                        $_temp = ($_temp*10)+9
+                        if ($i -eq $versionArray.Count-1) {
+                        
+                            $_revision = $_temp          
+                        }
+                    }
+                 }
+                '.' { 
+            
+                    if ($null -eq $_major) {
+                            
+                        $_major = $_temp
+                        $_temp = $null
+                    }
+                    if ($null -eq $_minor) {
+                        
+                        $_minor = $_temp
+                        $_temp = $null
+                    }
+                    if ($null -eq $_build) {
+                        
+                        $_build = $_temp
+                        $_temp = $null
+                    }
                 }
             }
         }
-    }
+        
+        $_major += $MajorIncrement
+        $_minor += $MinorIncrement
+        $_build += $BuildIncrement
+        $_revision += $RevisionIncrement
     
-    $_major += $MajorIncrement
-    $_minor += $MinorIncrement
-    $_build += $BuildIncrement
-    $_revision += $RevisionIncrement
-
-    Write-Host $_major'.'$_minor'.'$_build'.'$_revision
-    $_SolutionVersion = $_major.ToString()+"."+$_minor.ToString()+"."+$_build.ToString()+"."+$_revision.ToString()
-
-    Write-Host "##vso[task.setvariable variable=Major]$_major"
-    Write-Host "##vso[task.setvariable variable=Minor]$_minor"
-    Write-Host "##vso[task.setvariable variable=Build]$_build"
-    Write-Host "##vso[task.setvariable variable=Revision]$_revision"
-    Write-Host "##vso[task.setvariable variable=SolutionVersion]$_SolutionVersion"
+        Write-Host $_major'.'$_minor'.'$_build'.'$_revision
+        $_SolutionVersion = $_major.ToString()+"."+$_minor.ToString()+"."+$_build.ToString()+"."+$_revision.ToString()
+    
+        Write-Host "##vso[task.setvariable variable=Major]$_major"
+        Write-Host "##vso[task.setvariable variable=Minor]$_minor"
+        Write-Host "##vso[task.setvariable variable=Build]$_build"
+        Write-Host "##vso[task.setvariable variable=Revision]$_revision"
+        Write-Host "##vso[task.setvariable variable=SolutionVersion]$_SolutionVersion"
+    }
+    else {
+        
+        Write-Error "No Solutions found!"
+    }
 }
 else {
     
-    Write-Warning "No Solutions found!"
+    Write-Error "Connection not ready!"
 }
 #endregion

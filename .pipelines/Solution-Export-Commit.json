@@ -1,0 +1,645 @@
+{
+    "options": [
+        {
+            "enabled": false,
+            "definition": {
+                "id": "5d58cc01-7c75-450c-be18-a388ddb129ec"
+            },
+            "inputs": {
+                "branchFilters": "[\"+refs/heads/*\"]",
+                "additionalFields": "{}"
+            }
+        },
+        {
+            "enabled": false,
+            "definition": {
+                "id": "a9db38f9-9fdc-478c-b0f9-464221e58316"
+            },
+            "inputs": {
+                "workItemType": "Bug",
+                "assignToRequestor": "true",
+                "additionalFields": "{}"
+            }
+        }
+    ],
+    "variables": {
+        "Alias": {
+            "value": "",
+            "allowOverride": true
+        },
+        "CommitMessage": {
+            "value": "",
+            "allowOverride": true
+        },
+        "DomainName": {
+            "value": "contoso-dev",
+            "allowOverride": true
+        },
+        "DomainSuffix": {
+            "value": "crm.dynamics.com"
+        },
+        "system.debug": {
+            "value": "false",
+            "allowOverride": true
+        }
+    },
+    "properties": {},
+    "tags": [],
+    "_links": {
+        "self": {
+            "href": "https://dev.azure.com/poweralmops/f51b97ff-999a-4bd7-be6a-1dcf16734ae8/_apis/build/Definitions/38?revision=7"
+        },
+        "web": {
+            "href": "https://dev.azure.com/poweralmops/f51b97ff-999a-4bd7-be6a-1dcf16734ae8/_build/definition?definitionId=38"
+        },
+        "editor": {
+            "href": "https://dev.azure.com/poweralmops/f51b97ff-999a-4bd7-be6a-1dcf16734ae8/_build/designer?id=38&_a=edit-build-definition"
+        },
+        "badge": {
+            "href": "https://dev.azure.com/poweralmops/f51b97ff-999a-4bd7-be6a-1dcf16734ae8/_apis/build/status/38"
+        }
+    },
+    "jobAuthorizationScope": 2,
+    "jobTimeoutInMinutes": 60,
+    "jobCancelTimeoutInMinutes": 5,
+    "process": {
+        "phases": [
+            {
+                "steps": [
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Check Commit Message...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "e213ff0f-5d5c-4791-802d-52ea3e7be1f1",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "targetType": "filePath",
+                            "filePath": "scripts/Check-CommitMessage.ps1",
+                            "arguments": "-CommitMessage \"$(CommitMessage)\"",
+                            "script": "# Write your PowerShell commands here.\n\nWrite-Host \"Hello World\"\n",
+                            "errorActionPreference": "stop",
+                            "warningPreference": "default",
+                            "informationPreference": "default",
+                            "verbosePreference": "default",
+                            "debugPreference": "default",
+                            "progressPreference": "silentlyContinue",
+                            "failOnStderr": "false",
+                            "showWarnings": "false",
+                            "ignoreLASTEXITCODE": "false",
+                            "pwsh": "false",
+                            "workingDirectory": "",
+                            "runScriptInSeparateScope": "false"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Install Tools...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "8015465b-f367-4ec4-8215-8edf682574d3",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "DefaultVersion": "true",
+                            "PowerAppsAdminVersion": "(obsolete)",
+                            "XrmToolingPackageDeploymentVersion": "(obsolete)",
+                            "MicrosoftPowerAppsCheckerVersion": "(obsolete)",
+                            "CrmSdkCoreToolsVersion": "(obsolete)",
+                            "XrmOnlineManagementApiVersion": "(obsolete)"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Set Connection Variables...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "f39f114b-39ae-487c-b3af-2e243c29cbb1",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "authenticationType": "PowerPlatformSPN",
+                            "PowerPlatformEnvironment": "",
+                            "PowerPlatformSPN": "https://$(DomainName).$(DomainSuffix)/",
+                            "Environment": "https://$(DomainName).$(DomainSuffix)/",
+                            "ApplicationId": "",
+                            "RedirectUri": ""
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Parse Branch Path...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "e213ff0f-5d5c-4791-802d-52ea3e7be1f1",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "targetType": "filePath",
+                            "filePath": "scripts/Parse-BranchPath.ps1",
+                            "arguments": "-BranchPath $(Build.SourceBranchName)",
+                            "script": "# Write your PowerShell commands here.\n\nWrite-Host \"Hello World\"\n",
+                            "errorActionPreference": "stop",
+                            "warningPreference": "default",
+                            "informationPreference": "default",
+                            "verbosePreference": "default",
+                            "debugPreference": "default",
+                            "progressPreference": "silentlyContinue",
+                            "failOnStderr": "false",
+                            "showWarnings": "false",
+                            "ignoreLASTEXITCODE": "false",
+                            "pwsh": "false",
+                            "workingDirectory": "",
+                            "runScriptInSeparateScope": "false"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Parse Solution Version...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "e213ff0f-5d5c-4791-802d-52ea3e7be1f1",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "targetType": "filePath",
+                            "filePath": "scripts/Parse-SolutionVersion.ps1",
+                            "arguments": "-DomainName $(DomainName) -DomainSuffix $(DomainSuffix) -SolutionName $(SolutionName) -ClientID $(PowerPlatformSetConnectionVariables.BuildTools.ApplicationId) -ClientSecret $(PowerPlatformSetConnectionVariables.BuildTools.ClientSecret) -MajorIncrement '0' -MinorIncrement '0' -BuildIncrement '0' -RevisionIncrement '1'",
+                            "script": "# Write your PowerShell commands here.\n\nWrite-Host \"Hello World\"\n",
+                            "errorActionPreference": "stop",
+                            "warningPreference": "default",
+                            "informationPreference": "default",
+                            "verbosePreference": "default",
+                            "debugPreference": "default",
+                            "progressPreference": "silentlyContinue",
+                            "failOnStderr": "false",
+                            "showWarnings": "false",
+                            "ignoreLASTEXITCODE": "false",
+                            "pwsh": "false",
+                            "workingDirectory": "",
+                            "runScriptInSeparateScope": "false"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Set Solution Version...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "2c73f444-efd5-46b6-9416-44273166267b",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "authenticationType": "PowerPlatformSPN",
+                            "PowerPlatformEnvironment": "",
+                            "PowerPlatformSPN": "https://$(DomainName).$(DomainSuffix)/",
+                            "SolutionName": "$(SolutionName)",
+                            "SolutionVersionNumber": "$(Major).$(Minor).$(Build).$(Revision)"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Publish Customizations...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "da253d32-26bf-47cc-8994-ddb90bbfbe36",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "authenticationType": "PowerPlatformSPN",
+                            "PowerPlatformEnvironment": "",
+                            "PowerPlatformSPN": "https://$(DomainName).$(DomainSuffix)/",
+                            "Environment": "https://$(DomainName).$(DomainSuffix)/",
+                            "AsyncOperation": "true",
+                            "MaxAsyncWaitTime": "60"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Export Unmanaged Solution...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "16f6dae7-e6ef-4629-ae75-7988463cb6a6",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "authenticationType": "PowerPlatformSPN",
+                            "PowerPlatformEnvironment": "",
+                            "PowerPlatformSPN": "https://$(DomainName).$(DomainSuffix)/",
+                            "Environment": "https://$(DomainName).$(DomainSuffix)/",
+                            "SolutionName": "$(SolutionName)",
+                            "SolutionOutputFile": "$(System.ArtifactsDirectory)\\solutions\\$(SolutionName).zip",
+                            "Managed": "false",
+                            "TargetVersion": "",
+                            "AsyncOperation": "true",
+                            "MaxAsyncWaitTime": "60",
+                            "OverwriteLocalSolution": "true",
+                            "ExportAutoNumberingSettings": "true",
+                            "ExportCalendarSettings": "true",
+                            "ExportCustomizationSettings": "true",
+                            "ExportEmailTrackingSettings": "true",
+                            "ExportExternalApplicationSettings": "true",
+                            "ExportGeneralSettings": "true",
+                            "ExportIsvConfig": "false",
+                            "ExportMarketingSettings": "true",
+                            "ExportOutlookSynchronizationSettings": "true",
+                            "ExportRelationshipRoles": "true",
+                            "ExportSales": "true"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Export Managed Solution...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "16f6dae7-e6ef-4629-ae75-7988463cb6a6",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "authenticationType": "PowerPlatformSPN",
+                            "PowerPlatformEnvironment": "",
+                            "PowerPlatformSPN": "https://$(DomainName).$(DomainSuffix)/",
+                            "Environment": "https://$(DomainName).$(DomainSuffix)/",
+                            "SolutionName": "$(SolutionName)",
+                            "SolutionOutputFile": "$(System.ArtifactsDirectory)\\solutions\\$(SolutionName)_managed.zip",
+                            "Managed": "true",
+                            "TargetVersion": "",
+                            "AsyncOperation": "true",
+                            "MaxAsyncWaitTime": "60",
+                            "OverwriteLocalSolution": "true",
+                            "ExportAutoNumberingSettings": "true",
+                            "ExportCalendarSettings": "true",
+                            "ExportCustomizationSettings": "true",
+                            "ExportEmailTrackingSettings": "true",
+                            "ExportExternalApplicationSettings": "true",
+                            "ExportGeneralSettings": "true",
+                            "ExportIsvConfig": "false",
+                            "ExportMarketingSettings": "true",
+                            "ExportOutlookSynchronizationSettings": "true",
+                            "ExportRelationshipRoles": "true",
+                            "ExportSales": "true"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Check Solutions...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "54b4d3aa-732f-436b-9996-2a96a6715191",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "authenticationType": "PowerPlatformSPN",
+                            "PowerPlatformEnvironment": "",
+                            "PowerPlatformSPN": "https://$(DomainName).$(DomainSuffix)/",
+                            "UseDefaultPACheckerEndpoint": "true",
+                            "CustomPACheckerEndpoint": "",
+                            "FileLocation": "localFiles",
+                            "FilesToAnalyze": "$(System.ArtifactsDirectory)\\solutions\\*.zip",
+                            "FilesToAnalyzeSasUri": "",
+                            "FilesToExclude": "",
+                            "RulesToOverride": "",
+                            "RuleSet": "0ad12346-e108-40b8-a956-9a8f95ea18c9",
+                            "ErrorLevel": "HighIssueCount",
+                            "ErrorThreshold": "0",
+                            "FailOnPowerAppsCheckerAnalysisError": "true",
+                            "ArtifactDestinationName": "CodeAnalysisLogs"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": false,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Export Data...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "378ce4ea-1265-49fd-a64d-f36da5b2fb31",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "authenticationType": "PowerPlatformSPN",
+                            "PowerPlatformEnvironment": "",
+                            "PowerPlatformSPN": "https://$(DomainName).$(DomainSuffix)/",
+                            "Environment": "https://$(DomainName).$(DomainSuffix)/",
+                            "SchemaFile": "$(System.DefaultWorkingDirectory)\\config\\schema\\$(SolutionName)_schema.xml",
+                            "DataFile": "$(System.ArtifactsDirectory)\\data\\$(SolutionName)_data.zip",
+                            "Overwrite": "true"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": false,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Expand Data...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "e213ff0f-5d5c-4791-802d-52ea3e7be1f1",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "targetType": "filePath",
+                            "filePath": "scripts/Expand-ConfigData.ps1",
+                            "arguments": "-DataSetName $(SolutionName) -ConfigPath $(System.DefaultWorkingDirectory)\\config -ArtifactPath $(System.ArtifactsDirectory)",
+                            "script": "# Write your PowerShell commands here.\n\nWrite-Host \"Hello World\"\n",
+                            "errorActionPreference": "stop",
+                            "warningPreference": "default",
+                            "informationPreference": "default",
+                            "verbosePreference": "default",
+                            "debugPreference": "default",
+                            "progressPreference": "silentlyContinue",
+                            "failOnStderr": "false",
+                            "showWarnings": "false",
+                            "ignoreLASTEXITCODE": "false",
+                            "pwsh": "false",
+                            "workingDirectory": "",
+                            "runScriptInSeparateScope": "false"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Generate deployment Settings file...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "e213ff0f-5d5c-4791-802d-52ea3e7be1f1",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "targetType": "filePath",
+                            "filePath": "scripts/Create-SettingFile.ps1",
+                            "arguments": "-DomainName $(DomainName) -SolutionName $(SolutionName) -ArtifactPath $(System.ArtifactsDirectory) -SourcePath $(System.DefaultWorkingDirectory)",
+                            "script": "# Write your PowerShell commands here.\n\nWrite-Host \"Hello World\"\n",
+                            "errorActionPreference": "stop",
+                            "warningPreference": "default",
+                            "informationPreference": "default",
+                            "verbosePreference": "default",
+                            "debugPreference": "default",
+                            "progressPreference": "silentlyContinue",
+                            "failOnStderr": "false",
+                            "showWarnings": "false",
+                            "ignoreLASTEXITCODE": "false",
+                            "pwsh": "false",
+                            "workingDirectory": "",
+                            "runScriptInSeparateScope": "false"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Unpack Solutions...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "3cac89bb-1ef1-4aa7-a3c6-36c6e79c700e",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "SolutionInputFile": "$(System.ArtifactsDirectory)\\solutions\\$(SolutionName).zip",
+                            "SolutionTargetFolder": "$(System.DefaultWorkingDirectory)\\solutionSrc\\$(SolutionName)",
+                            "SolutionType": "Both",
+                            "OverwriteFiles": "true",
+                            "SingleComponent": "None",
+                            "MapFile": "",
+                            "LocaleTemplate": "",
+                            "Localize": "false",
+                            "UseLcid": "false",
+                            "ProcessCanvasApps": "false"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Run Microsoft Defender for DevOps...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "8d616517-6390-454f-b369-6fd038d8fe96",
+                            "versionSpec": "1.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "config": "",
+                            "policy": "microsoft",
+                            "categories": "secrets",
+                            "languages": "",
+                            "tools": "credscan",
+                            "break": "true",
+                            "publish": "true",
+                            "artifactName": "CodeSecurityLogs"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Commit to user branch...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "script": "git config user.email $(Build.RequestedForEmail)\ngit config user.name $(Build.RequestedFor)\ngit checkout users/$(Alias)/$(Build.SourceBranchName)\ngit add --all\ngit commit -m \"$(CommitMessage) in $(SolutionName) $(SolutionVersion)\"\ngit -c http.extraheader=\"AUTHORIZATION: bearer $(System.AccessToken)\" push origin users/$(Alias)/$(Build.SourceBranchName)",
+                            "workingDirectory": "",
+                            "failOnStderr": "false"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Publish Solutions Artifact...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "ecdc45f6-832d-4ad9-b52b-ee49e94659be",
+                            "versionSpec": "1.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "path": "$(System.ArtifactsDirectory)\\solutions",
+                            "artifactName": "Solutions",
+                            "artifactType": "pipeline",
+                            "fileSharePath": "",
+                            "parallel": "false",
+                            "parallelCount": "8",
+                            "properties": ""
+                        }
+                    }
+                ],
+                "name": "Solution Export and Commit to branch",
+                "refName": "Job_1",
+                "condition": "succeeded()",
+                "target": {
+                    "executionOptions": {
+                        "type": 0
+                    },
+                    "allowScriptsAuthAccessOption": true,
+                    "type": 1
+                },
+                "jobAuthorizationScope": 2
+            }
+        ],
+        "target": {
+            "agentSpecification": {
+                "identifier": "windows-2019"
+            }
+        },
+        "type": 1
+    },
+    "repository": {
+        "properties": {
+            "cleanOptions": "3",
+            "labelSources": "0",
+            "labelSourcesFormat": "$(build.buildNumber)",
+            "reportBuildStatus": "true",
+            "fetchDepth": "0",
+            "gitLfsSupport": "false",
+            "skipSyncSource": "false",
+            "checkoutNestedSubmodules": "false",
+            "fetchTags": "false"
+        },
+        "id": "af6cd795-550a-4fb9-ad14-e4d75eacc8ca",
+        "type": "TfsGit",
+        "name": "PowerDeployments",
+        "url": "https://dev.azure.com/poweralmops/PowerDeployments/_git/PowerDeployments",
+        "defaultBranch": "refs/heads/users/readme",
+        "clean": "true",
+        "checkoutSubmodules": false
+    },
+    "processParameters": {},
+    "quality": 1,
+    "authoredBy": {
+        "displayName": "Craig Lund",
+        "url": "https://spsprodcus4.vssps.visualstudio.com/Ac0db3a58-c5db-45d7-83aa-db9f36cbed30/_apis/Identities/0018251d-9faa-62c1-8374-2e5074f17586",
+        "_links": {
+            "avatar": {
+                "href": "https://dev.azure.com/poweralmops/_apis/GraphProfile/MemberAvatars/aad.MDAxODI1MWQtOWZhYS03MmMxLTgzNzQtMmU1MDc0ZjE3NTg2"
+            }
+        },
+        "id": "0018251d-9faa-62c1-8374-2e5074f17586",
+        "uniqueName": "craig.lund@poweralm.com",
+        "imageUrl": "https://dev.azure.com/poweralmops/_apis/GraphProfile/MemberAvatars/aad.MDAxODI1MWQtOWZhYS03MmMxLTgzNzQtMmU1MDc0ZjE3NTg2",
+        "descriptor": "aad.MDAxODI1MWQtOWZhYS03MmMxLTgzNzQtMmU1MDc0ZjE3NTg2"
+    },
+    "drafts": [],
+    "queue": {
+        "_links": {
+            "self": {
+                "href": "https://dev.azure.com/poweralmops/_apis/build/Queues/55"
+            }
+        },
+        "id": 55,
+        "name": "Azure Pipelines",
+        "url": "https://dev.azure.com/poweralmops/_apis/build/Queues/55",
+        "pool": {
+            "id": 9,
+            "name": "Azure Pipelines",
+            "isHosted": true
+        }
+    },
+    "id": 38,
+    "name": "Solution-Export-Commit",
+    "url": "https://dev.azure.com/poweralmops/f51b97ff-999a-4bd7-be6a-1dcf16734ae8/_apis/build/Definitions/38?revision=7",
+    "uri": "vstfs:///Build/Definition/38",
+    "path": "\\",
+    "type": 2,
+    "queueStatus": 0,
+    "revision": 7,
+    "createdDate": "2023-02-02T18:22:10.547Z",
+    "project": {
+        "id": "f51b97ff-999a-4bd7-be6a-1dcf16734ae8",
+        "name": "PowerDeployments",
+        "url": "https://dev.azure.com/poweralmops/_apis/projects/f51b97ff-999a-4bd7-be6a-1dcf16734ae8",
+        "state": 1,
+        "revision": 53,
+        "visibility": 0,
+        "lastUpdateTime": "2023-02-02T03:31:25.130Z"
+    }
+}

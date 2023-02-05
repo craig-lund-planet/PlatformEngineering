@@ -26,16 +26,16 @@ param (
     [string]$DataSetName,
     # Enter the path to the source config folder. Assumes child folders or Schemas and Data.
     [Parameter()]
-    [string]$ConfigPath,
+    [string]$ConfigFolderPath,
     # Enter the path to the artifacts folder.  
     [Parameter()]
-    [string]$ArtifactPath
+    [string]$ArtifactFolderPath
 )
 #endregion
 #region Create Paths & Folders
 Write-Host "Creating Paths and Folders..."
-$_artifactFilePath = $ArtifactPath+"\data\"+$DataSetName+"_data.zip"
-$_dataFolderPath = $ConfigPath+"\data\"+$DataSetName+"\"
+$_artifactFilePath = $ArtifactFolderPath+"\data\"+$DataSetName+"_data.zip"
+$_dataFolderPath = $ConfigFolderPath+"\data\"+$DataSetName+"\"
 Write-Debug $_artifactFilePath
 Write-Debug $_dataFolderPath
 #endregion
