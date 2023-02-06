@@ -1,0 +1,22 @@
+[
+    {
+      "FriendlyName": "Virtual connectors in Dataverse",
+      "UniqueName": "msft_ConnectorProviderAnchor"
+    },
+    {
+      "FriendlyName": "Environment variables",
+      "UniqueName": "EnvironmentVariablesSolutionAnchor"
+    },
+    {
+      "FriendlyName": "Power Platform Connection References",
+      "UniqueName": "PowerPlatformConnectionReferencesAnchor"
+    },
+    {
+      "FriendlyName": "Microsoft Flow Extensions",
+      "UniqueName": "MicrosoftFlowExtensionsAnchor"
+    },
+    {
+      "FriendlyName": "Power Apps Checker",
+      "UniqueName": "msdyn_PowerAppsCheckerAnchor"
+    }
+  ]

@@ -361,7 +361,7 @@ FodyWeavers.xsd
 # output directory
 /[Oo]ut
 
-# Block values in source (May not be needed any longer)
+# Block values in source
 environment_variable_values.json
 environmentvariablevalues.json
 
@@ -369,5 +369,5 @@ environmentvariablevalues.json
 .gdn/
 report.sarif
 
-# Added to block site settings in source (Use if secrets are used in site settings)
-#[Ss]itesetting.yml
+# Added to block site settings in source (Use when secrets are added in site settings)
+[Ss]itesetting.yml

@@ -1,0 +1,404 @@
+{
+    "options": [
+        {
+            "enabled": false,
+            "definition": {
+                "id": "5d58cc01-7c75-450c-be18-a388ddb129ec"
+            },
+            "inputs": {
+                "branchFilters": "[\"+refs/heads/*\"]",
+                "additionalFields": "{}"
+            }
+        },
+        {
+            "enabled": false,
+            "definition": {
+                "id": "a9db38f9-9fdc-478c-b0f9-464221e58316"
+            },
+            "inputs": {
+                "workItemType": "Bug",
+                "assignToRequestor": "true",
+                "additionalFields": "{}"
+            }
+        }
+    ],
+    "variables": {
+        "Alias": {
+            "value": "",
+            "allowOverride": true
+        },
+        "CommitMessage": {
+            "value": "",
+            "allowOverride": true
+        },
+        "DomainName": {
+            "value": "contoso-dev",
+            "allowOverride": true
+        },
+        "DomainSuffix": {
+            "value": "crm.dynamics.com",
+            "allowOverride": true
+        },
+        "system.debug": {
+            "value": "false",
+            "allowOverride": true
+        },
+        "WebSiteID": {
+            "value": "",
+            "allowOverride": true
+        }
+    },
+    "properties": {},
+    "tags": [],
+    "_links": {
+        "self": {
+            "href": "https://dev.azure.com/poweralmops/f51b97ff-999a-4bd7-be6a-1dcf16734ae8/_apis/build/Definitions/41?revision=5"
+        },
+        "web": {
+            "href": "https://dev.azure.com/poweralmops/f51b97ff-999a-4bd7-be6a-1dcf16734ae8/_build/definition?definitionId=41"
+        },
+        "editor": {
+            "href": "https://dev.azure.com/poweralmops/f51b97ff-999a-4bd7-be6a-1dcf16734ae8/_build/designer?id=41&_a=edit-build-definition"
+        },
+        "badge": {
+            "href": "https://dev.azure.com/poweralmops/f51b97ff-999a-4bd7-be6a-1dcf16734ae8/_apis/build/status/41"
+        }
+    },
+    "jobAuthorizationScope": 2,
+    "jobTimeoutInMinutes": 60,
+    "jobCancelTimeoutInMinutes": 5,
+    "process": {
+        "phases": [
+            {
+                "steps": [
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Check Commit Message...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "e213ff0f-5d5c-4791-802d-52ea3e7be1f1",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "targetType": "filePath",
+                            "filePath": "scripts/Check-CommitMessage.ps1",
+                            "arguments": "-CommitMessage \"$(CommitMessage)\"",
+                            "script": "# Write your PowerShell commands here.\n\nWrite-Host \"Hello World\"\n",
+                            "errorActionPreference": "stop",
+                            "warningPreference": "default",
+                            "informationPreference": "default",
+                            "verbosePreference": "default",
+                            "debugPreference": "default",
+                            "progressPreference": "silentlyContinue",
+                            "failOnStderr": "false",
+                            "showWarnings": "false",
+                            "ignoreLASTEXITCODE": "false",
+                            "pwsh": "false",
+                            "workingDirectory": "",
+                            "runScriptInSeparateScope": "false"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Install Tools...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "8015465b-f367-4ec4-8215-8edf682574d3",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "DefaultVersion": "true",
+                            "PowerAppsAdminVersion": "(obsolete)",
+                            "XrmToolingPackageDeploymentVersion": "(obsolete)",
+                            "MicrosoftPowerAppsCheckerVersion": "(obsolete)",
+                            "CrmSdkCoreToolsVersion": "(obsolete)",
+                            "XrmOnlineManagementApiVersion": "(obsolete)"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Parse Branch Path...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "e213ff0f-5d5c-4791-802d-52ea3e7be1f1",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "targetType": "filePath",
+                            "filePath": "scripts/Parse-ZiplyBranchPath.ps1",
+                            "arguments": "-BranchPath $(Build.SourceBranchName)",
+                            "script": "# Write your PowerShell commands here.\n\nWrite-Host \"Hello World\"\n",
+                            "errorActionPreference": "stop",
+                            "warningPreference": "default",
+                            "informationPreference": "default",
+                            "verbosePreference": "default",
+                            "debugPreference": "default",
+                            "progressPreference": "silentlyContinue",
+                            "failOnStderr": "false",
+                            "showWarnings": "false",
+                            "ignoreLASTEXITCODE": "false",
+                            "pwsh": "false",
+                            "workingDirectory": "",
+                            "runScriptInSeparateScope": "false"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Download Power Portal...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "75caa998-d6b8-481b-9ac9-63f49bd41e23",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "authenticationType": "PowerPlatformSPN",
+                            "PowerPlatformEnvironment": "",
+                            "PowerPlatformSPN": "https://$(DomainName).$(DomainSuffix)/",
+                            "Environment": "https://$(DomainName).$(DomainSuffix)/",
+                            "DownloadPath": "$(System.DefaultWorkingDirectory)\\portalSrc",
+                            "WebsiteId": "$(WebSiteID)",
+                            "Overwrite": "true",
+                            "ExcludeEntities": ""
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Export data...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "378ce4ea-1265-49fd-a64d-f36da5b2fb31",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "authenticationType": "PowerPlatformSPN",
+                            "PowerPlatformEnvironment": "",
+                            "PowerPlatformSPN": "https://$(DomainName).$(DomainSuffix)/",
+                            "Environment": "https://$(DomainName).$(DomainSuffix)/",
+                            "SchemaFile": "$(System.DefaultWorkingDirectory)\\config\\schema\\$(PortalName)_schema.xml",
+                            "DataFile": "$(System.ArtifactsDirectory)\\data\\$(PortalName)_data.zip",
+                            "Overwrite": "true"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Expand data...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "e213ff0f-5d5c-4791-802d-52ea3e7be1f1",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "targetType": "filePath",
+                            "filePath": "scripts/Expand-ConfigData.ps1",
+                            "arguments": "-DataSetName $(PortalName) -ConfigPath $(System.DefaultWorkingDirectory)\\config -ArtifactPath $(System.ArtifactsDirectory)",
+                            "script": "# Write your PowerShell commands here.\n\nWrite-Host \"Hello World\"\n",
+                            "errorActionPreference": "stop",
+                            "warningPreference": "default",
+                            "informationPreference": "default",
+                            "verbosePreference": "default",
+                            "debugPreference": "default",
+                            "progressPreference": "silentlyContinue",
+                            "failOnStderr": "false",
+                            "showWarnings": "false",
+                            "ignoreLASTEXITCODE": "false",
+                            "pwsh": "false",
+                            "workingDirectory": "",
+                            "runScriptInSeparateScope": "false"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Run Microsoft Defender for DevOps",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "8d616517-6390-454f-b369-6fd038d8fe96",
+                            "versionSpec": "1.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "config": "",
+                            "policy": "microsoft",
+                            "categories": "secrets",
+                            "languages": "",
+                            "tools": "credscan",
+                            "break": "true",
+                            "publish": "true",
+                            "artifactName": "CodeSecurityLogs"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Commit to user branch...",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "script": "git config user.email $(Build.RequestedForEmail)\ngit config user.name $(Build.RequestedFor)\ngit checkout users/$(Alias)/$(Build.SourceBranchName)\ngit add --all\ngit commit -m \"$(CommitMessage) in $(SolutionName)\"\ngit -c http.extraheader=\"AUTHORIZATION: bearer $(System.AccessToken)\" push origin users/$(Alias)/$(Build.SourceBranchName)\n",
+                            "workingDirectory": "",
+                            "failOnStderr": "false"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Publish Data Artifact",
+                        "timeoutInMinutes": 0,
+                        "retryCountOnTaskFailure": 0,
+                        "condition": "succeeded()",
+                        "task": {
+                            "id": "ecdc45f6-832d-4ad9-b52b-ee49e94659be",
+                            "versionSpec": "1.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "path": "$(System.ArtifactsDirectory)\\data",
+                            "artifactName": "Data",
+                            "artifactType": "pipeline",
+                            "fileSharePath": "",
+                            "parallel": "false",
+                            "parallelCount": "8",
+                            "properties": ""
+                        }
+                    }
+                ],
+                "name": "Portal Download and Commit to branch",
+                "refName": "Job_1",
+                "condition": "succeeded()",
+                "target": {
+                    "executionOptions": {
+                        "type": 0
+                    },
+                    "allowScriptsAuthAccessOption": true,
+                    "type": 1
+                },
+                "jobAuthorizationScope": 2
+            }
+        ],
+        "target": {
+            "agentSpecification": {
+                "identifier": "windows-2019"
+            }
+        },
+        "type": 1
+    },
+    "repository": {
+        "properties": {
+            "cleanOptions": "3",
+            "labelSources": "0",
+            "labelSourcesFormat": "$(build.buildNumber)",
+            "reportBuildStatus": "true",
+            "fetchDepth": "0",
+            "gitLfsSupport": "false",
+            "skipSyncSource": "false",
+            "checkoutNestedSubmodules": "false",
+            "fetchTags": "false"
+        },
+        "id": "af6cd795-550a-4fb9-ad14-e4d75eacc8ca",
+        "type": "TfsGit",
+        "name": "PowerDeployments",
+        "url": "https://dev.azure.com/poweralmops/PowerDeployments/_git/PowerDeployments",
+        "defaultBranch": "refs/heads/develop",
+        "clean": "true",
+        "checkoutSubmodules": false
+    },
+    "processParameters": {},
+    "quality": 1,
+    "authoredBy": {
+        "displayName": "Craig Lund",
+        "url": "https://spsprodcus4.vssps.visualstudio.com/Ac0db3a58-c5db-45d7-83aa-db9f36cbed30/_apis/Identities/0018251d-9faa-62c1-8374-2e5074f17586",
+        "_links": {
+            "avatar": {
+                "href": "https://dev.azure.com/poweralmops/_apis/GraphProfile/MemberAvatars/aad.MDAxODI1MWQtOWZhYS03MmMxLTgzNzQtMmU1MDc0ZjE3NTg2"
+            }
+        },
+        "id": "0018251d-9faa-62c1-8374-2e5074f17586",
+        "uniqueName": "craig.lund@poweralm.com",
+        "imageUrl": "https://dev.azure.com/poweralmops/_apis/GraphProfile/MemberAvatars/aad.MDAxODI1MWQtOWZhYS03MmMxLTgzNzQtMmU1MDc0ZjE3NTg2",
+        "descriptor": "aad.MDAxODI1MWQtOWZhYS03MmMxLTgzNzQtMmU1MDc0ZjE3NTg2"
+    },
+    "drafts": [],
+    "queue": {
+        "_links": {
+            "self": {
+                "href": "https://dev.azure.com/poweralmops/_apis/build/Queues/55"
+            }
+        },
+        "id": 55,
+        "name": "Azure Pipelines",
+        "url": "https://dev.azure.com/poweralmops/_apis/build/Queues/55",
+        "pool": {
+            "id": 9,
+            "name": "Azure Pipelines",
+            "isHosted": true
+        }
+    },
+    "id": 41,
+    "name": "Portal-Download-Commit",
+    "url": "https://dev.azure.com/poweralmops/f51b97ff-999a-4bd7-be6a-1dcf16734ae8/_apis/build/Definitions/41?revision=5",
+    "uri": "vstfs:///Build/Definition/41",
+    "path": "\\",
+    "type": 2,
+    "queueStatus": 0,
+    "revision": 5,
+    "createdDate": "2023-02-02T18:23:24.420Z",
+    "project": {
+        "id": "f51b97ff-999a-4bd7-be6a-1dcf16734ae8",
+        "name": "PowerDeployments",
+        "url": "https://dev.azure.com/poweralmops/_apis/projects/f51b97ff-999a-4bd7-be6a-1dcf16734ae8",
+        "state": 1,
+        "revision": 53,
+        "visibility": 0,
+        "lastUpdateTime": "2023-02-02T03:31:25.130Z"
+    }
+}

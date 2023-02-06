@@ -17,32 +17,17 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 #>
-[CmdletBinding()]
-param (
-    # Enter the build variable $(Build.SourceBranchName)
-    [Parameter(Mandatory)]
-    [string]$BranchPath
-)
-$BranchPath
-$_BranchPathArray = $BranchPath.ToCharArray()
-$_backwards = $null
-for ($i = $_BranchPathArray.Count-1; $i -gt -1; $i--) {
-
-    if ($_BranchPathArray[$i] -eq "/") {
-       
-        break
-    }
-    else {
-        
-        $_backwards += $_BranchPathArray[$i]
-    }
-}
-$_backwards = $_backwards.ToCharArray()
-$_forwards = $null
-for ($i = $_backwards.Count-1; $i -gt -1; $i--) {
-    
-    $_forwards += $_backwards[$i]
-}
-$_forwards
-Write-Host "##vso[task.setvariable variable=SolutionName]$_forwards"
-Write-Host "##vso[task.setvariable variable=PortalName]$_forwards"
+$_environment = "d7284e3c-b540-4cd3-921e-e1fcff091537"
+$_applicationList = ".\config\AppsNotInstalled.json"
+#region ENABLE TELEMETRY ==========================================
+pac telemetry enable
+#endregion ========================================================
+#region CREATE POWER PLATFORM CLI PROFILE =========================
+pac auth create --environment $_environment
+#endregion ========================================================
+#region INSTALL APPLICATIONS
+pac application list --environment $_environment --output $_applicationList --installState NotInstalled
+#endregion
+#region CLEAR AUTH TOKEN ==========================================
+pac auth clear
+#endregion ========================================================
