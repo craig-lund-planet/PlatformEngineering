@@ -1,0 +1,370 @@
+[
+  {
+    "FriendlyName": "Microsoft Cloud for Sustainability Data Model",
+    "UniqueName": "msdyn_SustainabilityDataModelAnchor"
+  },
+  {
+    "FriendlyName": "Dynamics 365 for Field Service",
+    "UniqueName": "FieldService_Anchor"
+  },
+  {
+    "FriendlyName": "HCM Talent",
+    "UniqueName": "msdyn_TalentApp_Anchor"
+  },
+  {
+    "FriendlyName": "Power Platform Milestones App",
+    "UniqueName": "MSFT_Milestones"
+  },
+  {
+    "FriendlyName": "Dynamics365 Customer Service Demo Data",
+    "UniqueName": "msdyn_CustomerServiceDemoDataAnchor"
+  },
+  {
+    "FriendlyName": "Microsoft Check-ins",
+    "UniqueName": "SampleAnchor"
+  },
+  {
+    "FriendlyName": "Government Solution - Government Services Sample Data",
+    "UniqueName": "GovernmentServicesSampleDataAnchor"
+  },
+  {
+    "FriendlyName": "Microsoft Cloud for Sustainability EPA 2021 Emission Factors",
+    "UniqueName": "msdyn_SustainabilityEmissionFactorsEPA2021Anchor"
+  },
+  {
+    "FriendlyName": "Healthcare FHIR Common Data Model",
+    "UniqueName": "FHIRAnchor"
+  },
+  {
+    "FriendlyName": "Intelligent Appointments Sample Data",
+    "UniqueName": "IntelligentAppointmentsSampleData"
+  },
+  {
+    "FriendlyName": "Government Solution - Portal",
+    "UniqueName": "GovernmentPortalAnchor"
+  },
+  {
+    "FriendlyName": "Retail banking core sample data",
+    "UniqueName": "RetailBankingCoreSampleData"
+  },
+  {
+    "FriendlyName": "Dual-write Notes Solutions",
+    "UniqueName": "msdyn_Dynamics365NotesAnchor"
+  },
+  {
+    "FriendlyName": "Dynamics 365 Nonprofit Accelerator",
+    "UniqueName": "NonprofitCoreAnchor"
+  },
+  {
+    "FriendlyName": "Financial services common sample data",
+    "UniqueName": "FinancialServicesCommonSampleData"
+  },
+  {
+    "FriendlyName": "Dynamics 365 HR Virtual Tables",
+    "UniqueName": "MicrosoftOperationsHRVEAnchor"
+  },
+  {
+    "FriendlyName": "Dynamics 365 HR Common Tables",
+    "UniqueName": "HCMCommonAnchor"
+  },
+  {
+    "FriendlyName": "Dual Write Finance and Extended Solutions",
+    "UniqueName": "msdyn_Dynamics365FinanceExtendedAnchor"
+  },
+  {
+    "FriendlyName": "OData v4 Data Provider",
+    "UniqueName": "ODatav4DataProvider"
+  },
+  {
+    "FriendlyName": "Intelligent Order Management Portal",
+    "UniqueName": "msdyn_IOMOrderReturnsPortalAnchor"
+  },
+  {
+    "FriendlyName": "Government Solution - Government Services App",
+    "UniqueName": "GovernmentServicesAppAnchor"
+  },
+  {
+    "FriendlyName": "Microsoft Quick Reports",
+    "UniqueName": "MicrosoftQuickReports"
+  },
+  {
+    "FriendlyName": "Dynamics 365 Project Operations Demo Data",
+    "UniqueName": "msdyn_ProjectOperationsSampleData_Anchor"
+  },
+  {
+    "FriendlyName": "Onboarding application",
+    "UniqueName": "OnboardingApplicationAnchor"
+  },
+  {
+    "FriendlyName": "Wealth Management data model",
+    "UniqueName": "WealthManagementDataModelAnchor"
+  },
+  {
+    "FriendlyName": "Omnichannel for Customer Service - Base",
+    "UniqueName": "OmnichannelPrimeAnchor"
+  },
+  {
+    "FriendlyName": "Dynamics 365 Customer Insights Realtime Ingestion (preview)",
+    "UniqueName": "msdynci_CIRealtimeIngestion"
+  },
+  {
+    "FriendlyName": "Fundraising and Engagement Marketing Insights",
+    "UniqueName": "FEMarketingInsightsAnchor"
+  },
+  {
+    "FriendlyName": "Government Solution - Data Model",
+    "UniqueName": "GovernmentCDMAnchor"
+  },
+  {
+    "FriendlyName": "Microsoft Check-ins",
+    "UniqueName": "msmwt_MicrosoftCheckins"
+  },
+  {
+    "FriendlyName": "Dual-write Dynamics 365 Human Resources",
+    "UniqueName": "msdyn_Dynamics365HCMAnchor"
+  },
+  {
+    "FriendlyName": "Dynamics 365 Telecommunications Accelerator",
+    "UniqueName": "TelcoAnchor"
+  },
+  {
+    "FriendlyName": "Finance + Operation Managed Data Lake",
+    "UniqueName": "msdyn_FnoIntegrationMDLApp_Anchor"
+  },
+  {
+    "FriendlyName": "Dynamics 365 Inventory Visibility",
+    "UniqueName": "msdyn_InventoryServiceAnchor"
+  },
+  {
+    "FriendlyName": "Finance and Operations Virtual Entity",
+    "UniqueName": "MicrosoftOperationsVEAnchor"
+  },
+  {
+    "FriendlyName": "Wealth Management Core Sample",
+    "UniqueName": "WealthManagementCoreSampleData"
+  },
+  {
+    "FriendlyName": "Power Automate document automation base kit",
+    "UniqueName": "Documentautomationbasekit"
+  },
+  {
+    "FriendlyName": "Environment variables",
+    "UniqueName": "EnvironmentVariablesSolutionAnchor"
+  },
+  {
+    "FriendlyName": "Customer Insights customer card add-in (Preview)",
+    "UniqueName": "CustomerInsightsCustomerCard"
+  },
+  {
+    "FriendlyName": "Business Central Virtual Table (Preview)",
+    "UniqueName": "MicrosoftBusinessCentralVEAnchor"
+  },
+  {
+    "FriendlyName": "Microsoft Cloud for Sustainability Defra Emission Factors",
+    "UniqueName": "msdyn_SustainabilityEmissionFactorsDefraAnchor"
+  },
+  {
+    "FriendlyName": "Power BI Extensions (Preview)",
+    "UniqueName": "msft_PowerBI_Anchor"
+  },
+  {
+    "FriendlyName": "Education Solution - Higher Ed Marketing Data",
+    "UniqueName": "HigherEdMarketingSampleDataAnchor"
+  },
+  {
+    "FriendlyName": "Property Casualty Insurance Data Model",
+    "UniqueName": "PropertyCasualtyDataModelAnchor"
+  },
+  {
+    "FriendlyName": "Education Solution - K12 Students Portal",
+    "UniqueName": "EducationAnchorK12EduPortal"
+  },
+  {
+    "FriendlyName": "Microsoft Cloud for Sustainability IPCC Emission Factors",
+    "UniqueName": "msdyn_SustainabilityEmissionFactorsIPCCAnchor"
+  },
+  {
+    "FriendlyName": "Customer Service Team Member",
+    "UniqueName": "msdynce_CustomerServiceTeamMemberAnchor"
+  },
+  {
+    "FriendlyName": "Dual-write core solution",
+    "UniqueName": "DualWriteCoreAnchor"
+  },
+  {
+    "FriendlyName": "Dual-write Supply Chain solution",
+    "UniqueName": "msdyn_Dynamics365SupplyChainExtendedAnchor"
+  },
+  {
+    "FriendlyName": "Telco Solution - Sales Sample Data",
+    "UniqueName": "TelcoSalesSampleDataAnchor"
+  },
+  {
+    "FriendlyName": "Retail banking data model",
+    "UniqueName": "RetailBankingDataModelAnchor"
+  },
+  {
+    "FriendlyName": "Dynamics 365 Media - Fan Engagement Apps",
+    "UniqueName": "MediaAnchor"
+  },
+  {
+    "FriendlyName": "ServiceTeam ITAM",
+    "UniqueName": "AMStandard"
+  },
+  {
+    "FriendlyName": "Education Solution - Higher Ed Students Portal",
+    "UniqueName": "EducationAnchorHigherEdEduPortal"
+  },
+  {
+    "FriendlyName": "AI Builder for Project Cortex",
+    "UniqueName": "SharePointFormProcessing"
+  },
+  {
+    "FriendlyName": "Microsoft Cloud for Sustainability Water Data Model",
+    "UniqueName": "msdyn_SustainabilityWaterDataModelAnchor"
+  },
+  {
+    "FriendlyName": "SMB Data Model",
+    "UniqueName": "SMBDataModelAnchor"
+  },
+  {
+    "FriendlyName": "Dynamics 365 Automotive Accelerator",
+    "UniqueName": "MicrosoftCommonDataModelforAutomotive"
+  },
+  {
+    "FriendlyName": "Dynamics 365 Global Inventory Accounting",
+    "UniqueName": "msdyn_GlobalInventoryAccountingAnchor"
+  },
+  {
+    "FriendlyName": "Planning Optimization Add-in for Dynamics 365 SCM",
+    "UniqueName": "msdyn_MasterPlanningAnchor"
+  },
+  {
+    "FriendlyName": "Dynamics 365 Media Portal",
+    "UniqueName": "MediaPortalAnchor"
+  },
+  {
+    "FriendlyName": "Microsoft Flow Extensions",
+    "UniqueName": "MicrosoftFlowExtensionsAnchor"
+  },
+  {
+    "FriendlyName": "Dynamics 365 CXP Sales",
+    "UniqueName": "DynamicsMKT_CxpSalesAnchorSolution"
+  },
+  {
+    "FriendlyName": "Dual-write Asset Management Solutions",
+    "UniqueName": "msdyn_DualWriteAssetManagementAnchor"
+  },
+  {
+    "FriendlyName": "Document Intelligence",
+    "UniqueName": "DocumentIntelligenceAnchor"
+  },
+  {
+    "FriendlyName": "appprofilemanager",
+    "UniqueName": "msdyn_AppProfileManagerAnchor"
+  },
+  {
+    "FriendlyName": "CVAA Solution",
+    "UniqueName": "msdynce_EmailInUnifiedInterface"
+  },
+  {
+    "FriendlyName": "Dynamics 365 FSI Loan Onboarding Sample Data",
+    "UniqueName": "LoanOnboardingSampleData"
+  },
+  {
+    "FriendlyName": "supplierportal",
+    "UniqueName": "msft_DigitalSupplyChainSupplierPortalAnchor"
+  },
+  {
+    "FriendlyName": "Cards for Power Apps (preview)",
+    "UniqueName": "msft_PowerAppsCardsAnchor"
+  },
+  {
+    "FriendlyName": "Banking customer intelligence",
+    "UniqueName": "BankingCustomerIntelligenceAnchor"
+  },
+  {
+    "FriendlyName": "Education Solution - Higher Ed Apps",
+    "UniqueName": "EducationAnchorHigherEd"
+  },
+  {
+    "FriendlyName": "Unified Client Profile for Wealth Management",
+    "UniqueName": "WealthManagementAnchor"
+  },
+  {
+    "FriendlyName": "Microsoft Cloud for Sustainability EPA 2022 Emission Factors",
+    "UniqueName": "msdyn_SustainabilityEmissionFactorsEPA2022Anchor"
+  },
+  {
+    "FriendlyName": "Education Solution - K12 Apps",
+    "UniqueName": "EducationAnchorK12"
+  },
+  {
+    "FriendlyName": "Dual-write application orchestration solution",
+    "UniqueName": "Dynamics365FinanceAndOperationsAnchor"
+  },
+  {
+    "FriendlyName": "LinkedIn Sales Navigator for Dynamics 365",
+    "UniqueName": "msdyn_LinkedInSalesNavigatorAnchor"
+  },
+  {
+    "FriendlyName": "Dynamics 365 Customer Voice",
+    "UniqueName": "MicrosoftFormsPro"
+  },
+  {
+    "FriendlyName": "Dynamics 365 Export to Data Lake",
+    "UniqueName": "msdyn_ExportToDataLakeAnchor"
+  },
+  {
+    "FriendlyName": "Document Intelligence Sample Data",
+    "UniqueName": "DocumentIntelligenceSampleData"
+  },
+  {
+    "FriendlyName": "Power Apps Actions",
+    "UniqueName": "PowerAppsActions_Anchor"
+  },
+  {
+    "FriendlyName": "Microsoft Sustainability Manager Demo Data",
+    "UniqueName": "msdyn_SustainabilityDemoDataAnchor"
+  },
+  {
+    "FriendlyName": "Wrap for Power Apps",
+    "UniqueName": "msdyn_MobileAppsSolutionAnchor"
+  },
+  {
+    "FriendlyName": "Virtual connectors in Dataverse",
+    "UniqueName": "msft_ConnectorProviderAnchor"
+  },
+  {
+    "FriendlyName": "Telco Solution - Plant Maintenance Sample Data",
+    "UniqueName": "TelcoPlantMaintenanceSampleDataAnchor"
+  },
+  {
+    "FriendlyName": "Dynamics 365 Automotive Accelerator Portal",
+    "UniqueName": "AutoPortalAnchor"
+  },
+  {
+    "FriendlyName": "fixme",
+    "UniqueName": "Fixme"
+  },
+  {
+    "FriendlyName": "Dual-write Party and Global Address Book Solutions",
+    "UniqueName": "Dynamics365GABParty_Anchor"
+  },
+  {
+    "FriendlyName": "Agent Productivity Tools",
+    "UniqueName": "AgentProductivityToolsAnchor"
+  },
+  {
+    "FriendlyName": "Account Onboarding",
+    "UniqueName": "AccountOnboardingAnchor"
+  },
+  {
+    "FriendlyName": "Dynamics 365 Media Content Production Management",
+    "UniqueName": "MediaContentProductionManagementAnchor"
+  },
+  {
+    "FriendlyName": "Dual-write Application Core Solutions",
+    "UniqueName": "msdyn_DualWriteAppCoreAnchor"
+  }
+]

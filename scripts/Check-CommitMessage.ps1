@@ -19,30 +19,24 @@
 #>
 [CmdletBinding()]
 param (
-    # Enter the build variable $(Build.SourceBranchName)
-    [Parameter(Mandatory)]
-    [string]$BranchPath
+    # Check the Commit message
+    [Parameter()]
+    [string]
+    $CommitMessage
 )
-$BranchPath
-$_BranchPathArray = $BranchPath.ToCharArray()
-$_backwards = $null
-for ($i = $_BranchPathArray.Count-1; $i -gt -1; $i--) {
 
-    if ($_BranchPathArray[$i] -eq "/") {
-       
-        break
-    }
-    else {
-        
-        $_backwards += $_BranchPathArray[$i]
-    }
-}
-$_backwards = $_backwards.ToCharArray()
-$_forwards = $null
-for ($i = $_backwards.Count-1; $i -gt -1; $i--) {
+Write-Host "Message:"$CommitMessage
+Write-Host "Length :"$CommitMessage.Length
+
+if ($null -eq $CommitMessage -or $CommitMessage -eq "") {
     
-    $_forwards += $_backwards[$i]
+    Write-Error "COMMIT MESSAGE CANNOT BE EMPTY!"
 }
-$_forwards
-Write-Host "##vso[task.setvariable variable=SolutionName]$_forwards"
-Write-Host "##vso[task.setvariable variable=PortalName]$_forwards"
+elseif ($CommitMessage.Length -gt 85) {
+    
+    Write-Error "COMMIT MESSAGE LENGTH MUST BE 85 CHARACTERS OR LESS!"
+}
+else {
+    
+    Write-Host "Commit message approved!"
+}

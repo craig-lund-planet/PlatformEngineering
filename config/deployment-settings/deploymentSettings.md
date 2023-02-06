@@ -1,13 +1,15 @@
-# Help:
-Create a settings file from solution zip or solution folder.
+# Introduction
+Deployment Settings are used to set Envuronment Variables and Connection References in each environment per solution on deployment.
 
-# Commands:
-Usage: pac solution create-settings [--solution-zip] [--solution-folder] [--settings-file]
+## Create a settings file from solution zip or solution folder.
+```azurecli
+pac solution create-settings [--solution-zip] [--solution-folder] [--settings-file]
 
   --solution-zip              Path to solution zip file. (alias: -z)
   --solution-folder           Path to the local, unpacked solution folder: either the root of the 'Other/Solution.xml' file or a folder with a .cdsproj file. (alias: -f)
   --settings-file             The .json file with the deployment settings for connection references and environment variables. (alias: -s)
-
+```
+### Example
 ```json
   {
     "EnvironmentVariables": [
@@ -25,3 +27,5 @@ Usage: pac solution create-settings [--solution-zip] [--solution-folder] [--sett
     ]
   }
   ```
+
+*Caution: Secrets, Passwords, and Keys added in clear text will be visible in source code if not blocked or removed from solutions. Environment Variables of type secret should be used for secret values. Best practice should be to never add to default value unless this value will seldom of never change.*

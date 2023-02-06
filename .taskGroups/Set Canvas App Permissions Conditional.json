@@ -1,0 +1,164 @@
+{
+    "tasks": [
+        {
+            "environment": {},
+            "displayName": "Set Canvas App Permissions...",
+            "alwaysRun": false,
+            "continueOnError": false,
+            "condition": "and(succeeded(), ne(variables['SolutionImportType'],'Skip'))",
+            "enabled": true,
+            "timeoutInMinutes": 0,
+            "retryCountOnTaskFailure": 3,
+            "inputs": {
+                "targetType": "filePath",
+                "filePath": "$(ScriptsFolderPath)/Set-CanvasPermissions.ps1",
+                "arguments": "-DomainName $(DomainName) -ClientID $(ClientID) -ClientSecret $(ClientSecret) -TenantID $(TenantID) -PublisherPrefix $(Prefix) -Permissions $(Premissions)",
+                "script": "# Write your PowerShell commands here.\n\nWrite-Host \"Hello World\"\n",
+                "errorActionPreference": "stop",
+                "warningPreference": "default",
+                "informationPreference": "default",
+                "verbosePreference": "default",
+                "debugPreference": "default",
+                "progressPreference": "silentlyContinue",
+                "failOnStderr": "false",
+                "showWarnings": "false",
+                "ignoreLASTEXITCODE": "false",
+                "pwsh": "false",
+                "workingDirectory": "",
+                "runScriptInSeparateScope": "false"
+            },
+            "task": {
+                "id": "e213ff0f-5d5c-4791-802d-52ea3e7be1f1",
+                "versionSpec": "2.*",
+                "definitionType": "task"
+            }
+        }
+    ],
+    "runsOn": [
+        "Agent",
+        "DeploymentGroup"
+    ],
+    "revision": 2,
+    "createdBy": {
+        "displayName": "Craig Lund",
+        "id": "0018251d-9faa-62c1-8374-2e5074f17586",
+        "uniqueName": "craig.lund@poweralm.com"
+    },
+    "createdOn": "2023-02-05T18:17:52.770Z",
+    "modifiedBy": {
+        "displayName": "Craig Lund",
+        "id": "0018251d-9faa-62c1-8374-2e5074f17586",
+        "uniqueName": "craig.lund@poweralm.com"
+    },
+    "modifiedOn": "2023-02-05T18:28:23.893Z",
+    "comment": "",
+    "id": "ce6f0889-c969-4163-9ea9-26414534c3fe",
+    "name": "Set Canvas App Permissions Conditional",
+    "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0,
+        "isTest": false
+    },
+    "iconUrl": "https://cdn.vsassets.io/v/M216_20230131.11/_content/icon-meta-task.png",
+    "friendlyName": "Set Canvas App Permissions Conditional",
+    "description": "Set the permissions on all canvas app with the provided prefix to Environments Security Group. Requires the Set-CanvasPermissions.ps1 script. Recommended to get the connection variables from the \"Power Platform Set Connection Variables\" task. ",
+    "category": "Utility",
+    "definitionType": "metaTask",
+    "author": "Craig Lund",
+    "demands": [],
+    "groups": [],
+    "inputs": [
+        {
+            "aliases": [],
+            "options": {},
+            "properties": {},
+            "name": "ClientID",
+            "label": "ClientID",
+            "defaultValue": "$(PowerPlatformSetConnectionVariables.BuildTools.ApplicationId)",
+            "required": true,
+            "type": "string",
+            "helpMarkDown": "Enter the Client ID for the Service Principle as a string. Default value comes from the Set Connection Variables task. ",
+            "groupName": ""
+        },
+        {
+            "aliases": [],
+            "options": {},
+            "properties": {},
+            "name": "ClientSecret",
+            "label": "ClientSecret",
+            "defaultValue": "$(PowerPlatformSetConnectionVariables.BuildTools.ClientSecret)",
+            "required": true,
+            "type": "string",
+            "helpMarkDown": "Enter the Client Secret for the Service Principle as a string. Default value comes from the Set Connection Variables task. ",
+            "groupName": ""
+        },
+        {
+            "aliases": [],
+            "options": {},
+            "properties": {},
+            "name": "DomainName",
+            "label": "DomainName",
+            "defaultValue": "$(DomainName)",
+            "required": true,
+            "type": "string",
+            "helpMarkDown": "Enter the domain name of the environment to connect to. Example: For https://contoso.crm.dynamics.com/ the domain name would be contoso.",
+            "groupName": ""
+        },
+        {
+            "aliases": [],
+            "options": {},
+            "properties": {},
+            "name": "Prefix",
+            "label": "Prefix",
+            "defaultValue": "",
+            "required": true,
+            "type": "string",
+            "helpMarkDown": "Enter the prefix used for the canvas apps (non-model-driven) that you want to share with the environment. Note, data permissions are still required. For cont_ContosoApp_469s0 it would be cont.",
+            "groupName": ""
+        },
+        {
+            "aliases": [],
+            "options": {},
+            "properties": {},
+            "name": "Premissions",
+            "label": "Premissions",
+            "defaultValue": "CanView",
+            "required": true,
+            "type": "string",
+            "helpMarkDown": "Enter the Permission level desired to give the Canvas App. CanViewWithShare | CanEdit | CanView.",
+            "groupName": ""
+        },
+        {
+            "aliases": [],
+            "options": {},
+            "properties": {},
+            "name": "ScriptsFolderPath",
+            "label": "ScriptsFolderPath",
+            "defaultValue": "scripts",
+            "required": true,
+            "type": "string",
+            "helpMarkDown": "Enter the path to the scripts folder. ",
+            "groupName": ""
+        },
+        {
+            "aliases": [],
+            "options": {},
+            "properties": {},
+            "name": "TenantID",
+            "label": "TenantID",
+            "defaultValue": "$(PowerPlatformSetConnectionVariables.BuildTools.TenantId)",
+            "required": true,
+            "type": "string",
+            "helpMarkDown": "Enter the TenantID of the Organization to connect to. Default value comes from the Set Connection Variables task. ",
+            "groupName": ""
+        }
+    ],
+    "satisfies": [],
+    "sourceDefinitions": [],
+    "dataSourceBindings": [],
+    "instanceNameFormat": "Set Canvas App Permissions",
+    "preJobExecution": {},
+    "execution": {},
+    "postJobExecution": {}
+}
