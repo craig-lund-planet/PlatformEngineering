@@ -134,11 +134,11 @@ Future iterations of this will shift to a "Fusion Development" approach. [Ebook:
 
 - **Release (`release`)**   
  
-    The `release` branch, if used, holds a group of tested and deployable features ready to be released. The `release` branch isolates `develop` from `main` in order to support longer testing cycles. The `develop` branch should be created based upon the main branch.
+    The `release` branch, if used, holds a group of tested and deployable features ready to be released. The `release` branch isolates `develop` from `main` in order to support longer testing cycles. The `release` branch should be created based upon the main branch.
 
 - **Develop (`develop`)**
 
-    The `develop` branch holds testable and deployable features ready to be tested. All **QAT** deployments should happen **ONLY** from the `develop` branch. The `develop` branch should be created based upon the `main` or `release` branch.
+    The `develop` branch holds testable and deployable features ready to be tested. All **QAT** deployments should happen **ONLY** from the `develop` branch. The `develop` branch should be created based upon the `main` or `release`, if used, branch.
 
 - **User (`users`)**
 
